@@ -41,6 +41,7 @@ function playRound(playerSelection, computerSelection) {
   if (playerSelection.toLowerCase() === "paper" && computerSelection === "rock")
     result += "You Win! Paper beats Rock";
 
+  // When players have the same choice, it's a tie
   if (
     (playerSelection.toLowerCase() === "paper" &&
       computerSelection === "paper") ||
