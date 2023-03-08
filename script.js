@@ -1,10 +1,12 @@
 //Scorekeeping instances
 let playerScore = 0;
 let computerScore = 0;
-let score = "";
 
 //accessing html elements with DOM
-let result = document.querySelector("#result"); //div to display result
+let result = document.querySelector("#result"); //div to display result of round
+let score = document.querySelector("#score"); //div to display score
+let finalScore = document.querySelector("#final");
+// let scoreContent = "Player: " + playerScore + " - Computer: " + computerScore;
 const rockBtn = document.querySelector(".rock-btn"); // rock button
 const paperBtn = document.querySelector(".paper-btn"); // paper button
 const scissorsBtn = document.querySelector(".scissors-btn"); // scissors button
@@ -30,31 +32,43 @@ function getComputerChoice() {
   return choices[Math.floor(Math.random() * choices.length)];
 }
 
+// functions to increment scores
+function increasePlayerScore() {
+  return playerScore++;
+}
+
+function increaseComputerScore() {
+  return computerScore++;
+}
+
 // Function to play a round of rps
 function playRound(playerSelection, computerSelection) {
+  // let playerScore = 0;
+  // let computerScore = 0;
+
   // When computer beats player
   if (
     playerSelection.toLowerCase() === "rock" &&
     computerSelection === "paper"
   ) {
+    increaseComputerScore();
     result.innerHTML = "You Lose! Paper beats Rock ";
-    // computerScore++;
   }
 
   if (
     playerSelection.toLowerCase() === "scissors" &&
     computerSelection === "rock"
   ) {
+    increaseComputerScore();
     result.innerHTML = "You Lose! Rock beats Scissors ";
-    // computerScore++;
   }
 
   if (
     playerSelection.toLowerCase() === "paper" &&
     computerSelection === "scissors"
   ) {
+    increaseComputerScore();
     result.innerHTML = "You Lose! Scissors beats Paper ";
-    // computerScore++;
   }
 
   // When player beats computer
@@ -62,41 +76,41 @@ function playRound(playerSelection, computerSelection) {
     playerSelection.toLowerCase() === "scissors" &&
     computerSelection === "paper"
   ) {
+    increasePlayerScore();
     result.innerHTML = "You Win! Paper beats Rock ";
-    // playerScore++;
   }
 
   if (
     playerSelection.toLowerCase() === "rock" &&
     computerSelection === "scissors"
   ) {
+    increasePlayerScore();
     result.innerHTML = "You Win! Rock beats Scissors ";
-    // playerScore++;
   }
 
   if (
     playerSelection.toLowerCase() === "paper" &&
     computerSelection === "rock"
   ) {
+    increasePlayerScore();
     result.innerHTML = "You Win! Paper beats Rock ";
-    // playerScore++;
   }
 
   // When players have the same choice, it's a tie
-  if (
-    (playerSelection.toLowerCase() === "paper" &&
-      computerSelection === "paper") ||
-    (playerSelection.toLowerCase() === "rock" &&
-      computerSelection === "rock") ||
-    (playerSelection.toLowerCase() === "scissors" &&
-      computerSelection === "scissors")
-  ) {
+  if (playerSelection.toLowerCase() === computerSelection) {
     result.innerHTML = "It's a tie ";
   }
 
   //   display score and winner of round
-  // score = "Score is: Player " + playerScore + " vs Computer " + computerScore;
-  return result.innerHTML;
+  score.innerHTML =
+    "Score is: Player " + playerScore + " vs Computer " + computerScore;
+
+  if (playerScore === 5) {
+    finalScore.innerHTML = "Congrats! You Won";
+  } else if (computerScore === 5) {
+    finalScore.innerHTML === "Sorry, you lost.";
+  }
+  // return result.innerHTML + score.innerHTML;
 }
 
 // Function to generate a 5 round game of rps
