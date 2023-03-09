@@ -10,6 +10,7 @@ let finalScore = document.querySelector("#final");
 const rockBtn = document.querySelector(".rock-btn"); // rock button
 const paperBtn = document.querySelector(".paper-btn"); // paper button
 const scissorsBtn = document.querySelector(".scissors-btn"); // scissors button
+const buttons = document.getElementsByTagName("button");
 
 // Click event on buttons (calling playRound())
 rockBtn.addEventListener("click", () => {
@@ -41,11 +42,15 @@ function increaseComputerScore() {
   return computerScore++;
 }
 
+// function to disable buttons (to be used when score is reached)
+function disableButtons() {
+  for (let i = 0; i < buttons.length; i++) {
+    buttons[i].disabled = true;
+  }
+}
+
 // Function to play a round of rps
 function playRound(playerSelection, computerSelection) {
-  // let playerScore = 0;
-  // let computerScore = 0;
-
   // When computer beats player
   if (
     playerSelection.toLowerCase() === "rock" &&
@@ -107,10 +112,11 @@ function playRound(playerSelection, computerSelection) {
 
   if (playerScore === 5) {
     finalScore.innerHTML = "Congrats! You Won";
+    disableButtons();
   } else if (computerScore === 5) {
     finalScore.innerHTML === "Sorry, you lost.";
+    disableButtons();
   }
-  // return result.innerHTML + score.innerHTML;
 }
 
 // Function to generate a 5 round game of rps
