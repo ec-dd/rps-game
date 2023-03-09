@@ -8,15 +8,28 @@
   <body>
     <div class="container">
       <h1 class="title">Rock Paper Scissors</h1>
+      <!-- game buttons -->
       <div class="game-btn">
         <button class="rock-btn">rock</button>
         <button class="paper-btn">paper</button>
         <button class="scissors-btn">scissors</button>
       </div>
-
+      <!-- Score count display -->
+      <div class="score">
+        <div class="playerScore">
+          <p>Player</p>
+          <p id="playerScoreCount">0</p>
+        </div>
+        <div class="computerScore">
+          <p>Computer</p>
+          <p id="computerScoreCount">0</p>
+        </div>
+      </div>
+      <!-- result of each round -->
       <div id="result"></div>
-      <div id="score"></div>
+      <!-- final result of game -->
       <div id="final"></div>
+      <!-- restart game button -->
       <button class="restart" hidden>restart</button>
     </div>
     <script src="script.js"></script>

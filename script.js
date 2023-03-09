@@ -5,12 +5,18 @@ let computerScore = 0;
 //accessing html elements with DOM
 let result = document.querySelector("#result"); //div to display result of round
 let score = document.querySelector("#score"); //div to display score
-let finalScore = document.querySelector("#final");
+let finalScore = document.querySelector("#final"); //final result
+
+// buttons
 const rockBtn = document.querySelector(".rock-btn"); // rock button
 const paperBtn = document.querySelector(".paper-btn"); // paper button
 const scissorsBtn = document.querySelector(".scissors-btn"); // scissors button
-const buttons = [rockBtn, paperBtn, scissorsBtn];
-let restartBtn = document.querySelector(".restart");
+const buttons = [rockBtn, paperBtn, scissorsBtn]; //Array of game buttons
+const restartBtn = document.querySelector(".restart"); // restart button
+
+// Score counter
+const playerScoreCounter = document.getElementById("playerScoreCounter");
+const computerScoreCounter = document.getElementById("computerScoreCounter");
 
 // Click event on buttons (calling playRound())
 rockBtn.addEventListener("click", () => {
@@ -47,6 +53,20 @@ function increaseComputerScore() {
   return computerScore++;
 }
 
+//functions for score displays
+function displayPlayerScore() {
+  return (playerScoreCounter.innerHTML = playerScore);
+}
+
+function displayComputerScore() {
+  return (computerScoreCounter.innerHTML = computerScore);
+}
+
+function displayScores() {
+  displayComputerScore();
+  displayPlayerScore();
+}
+
 // function to disable buttons (to be used when score is reached)
 function disableButtons() {
   for (let i = 0; i < buttons.length; i++) {
@@ -62,6 +82,7 @@ function playRound(playerSelection, computerSelection) {
     computerSelection === "paper"
   ) {
     increaseComputerScore();
+    displayScores();
     result.innerHTML = "You Lose! Paper beats Rock ";
   }
 
@@ -70,6 +91,7 @@ function playRound(playerSelection, computerSelection) {
     computerSelection === "rock"
   ) {
     increaseComputerScore();
+    displayScores();
     result.innerHTML = "You Lose! Rock beats Scissors ";
   }
 
@@ -78,6 +100,7 @@ function playRound(playerSelection, computerSelection) {
     computerSelection === "scissors"
   ) {
     increaseComputerScore();
+    displayScores();
     result.innerHTML = "You Lose! Scissors beats Paper ";
   }
 
@@ -87,6 +110,7 @@ function playRound(playerSelection, computerSelection) {
     computerSelection === "paper"
   ) {
     increasePlayerScore();
+    displayScores();
     result.innerHTML = "You Win! Paper beats Rock ";
   }
 
@@ -95,6 +119,7 @@ function playRound(playerSelection, computerSelection) {
     computerSelection === "scissors"
   ) {
     increasePlayerScore();
+    displayScores();
     result.innerHTML = "You Win! Rock beats Scissors ";
   }
 
@@ -103,6 +128,7 @@ function playRound(playerSelection, computerSelection) {
     computerSelection === "rock"
   ) {
     increasePlayerScore();
+    displayScores();
     result.innerHTML = "You Win! Paper beats Rock ";
   }
 
@@ -112,14 +138,14 @@ function playRound(playerSelection, computerSelection) {
   }
 
   //   display score and winner of round
-  score.innerHTML =
-    "Score is: Player " + playerScore + " vs Computer " + computerScore;
+  // score.innerHTML =
+  //   "Score is: Player " + playerScore + " vs Computer " + computerScore;
 
-  if (playerScore === 5) {
+  if (playerScoreCounter === 5) {
     finalScore.innerHTML = "Congrats! You Won";
     disableButtons();
     restartBtn.removeAttribute("hidden");
-  } else if (computerScore === 5) {
+  } else if (computerScoreCounter === 5) {
     finalScore.innerHTML === "Sorry, you lost.";
     disableButtons();
     restartBtn.removeAttribute("hidden");
