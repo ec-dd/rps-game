@@ -6,11 +6,11 @@ let computerScore = 0;
 let result = document.querySelector("#result"); //div to display result of round
 let score = document.querySelector("#score"); //div to display score
 let finalScore = document.querySelector("#final");
-// let scoreContent = "Player: " + playerScore + " - Computer: " + computerScore;
 const rockBtn = document.querySelector(".rock-btn"); // rock button
 const paperBtn = document.querySelector(".paper-btn"); // paper button
 const scissorsBtn = document.querySelector(".scissors-btn"); // scissors button
-const buttons = document.getElementsByTagName("button");
+const buttons = [rockBtn, paperBtn, scissorsBtn];
+let restartBtn = document.querySelector(".restart");
 
 // Click event on buttons (calling playRound())
 rockBtn.addEventListener("click", () => {
@@ -23,6 +23,11 @@ paperBtn.addEventListener("click", () => {
 
 scissorsBtn.addEventListener("click", () => {
   playRound("scissors", getComputerChoice());
+});
+
+// restart game button
+restartBtn.addEventListener("click", () => {
+  window.location.reload();
 });
 
 // Function that returns either 'Rock', 'Paper' or 'Scissors'
@@ -113,9 +118,11 @@ function playRound(playerSelection, computerSelection) {
   if (playerScore === 5) {
     finalScore.innerHTML = "Congrats! You Won";
     disableButtons();
+    restartBtn.removeAttribute("hidden");
   } else if (computerScore === 5) {
     finalScore.innerHTML === "Sorry, you lost.";
     disableButtons();
+    restartBtn.removeAttribute("hidden");
   }
 }
 
