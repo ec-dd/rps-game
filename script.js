@@ -145,11 +145,11 @@ function playRound(playerSelection, computerSelection) {
 
   // When score is reached
   if (playerScoreCounter.innerHTML === "5") {
-    finalScore.innerHTML = "Congrats! You Won";
+    finalScore.innerHTML = "Congrats! You Won the game!";
     disableButtons();
     enableRestartButton();
   } else if (computerScoreCounter.innerHTML === "5") {
-    finalScore.innerHTML = "Sorry, you lost.";
+    finalScore.innerHTML = "Sorry, you lost the game.";
     disableButtons();
     enableRestartButton();
   }

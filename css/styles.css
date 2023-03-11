@@ -5,6 +5,10 @@
   flex-direction: column;
 }
 
+.title {
+  font-family: "Tilt Warp", cursive;
+}
+
 .score {
   display: flex;
   flex-direction: row;
@@ -17,6 +21,6 @@
   padding-right: 100px;
 }
 
-p {
-  font-family: Arial, Helvetica, sans-serif;
+.score p {
+  font-family: "Bebas Neue", cursive;
 }
