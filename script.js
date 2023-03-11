@@ -68,6 +68,11 @@ function displayScores() {
   displayPlayerScore();
 }
 
+// enable/show the restart button
+function enableRestartButton() {
+  return restartBtn.removeAttribute("hidden");
+}
+
 // function to disable buttons (to be used when score is reached)
 function disableButtons() {
   for (let i = 0; i < buttons.length; i++) {
@@ -142,11 +147,11 @@ function playRound(playerSelection, computerSelection) {
   if (playerScoreCounter.innerHTML === "5") {
     finalScore.innerHTML = "Congrats! You Won";
     disableButtons();
-    restartBtn.removeAttribute("hidden");
+    enableRestartButton();
   } else if (computerScoreCounter.innerHTML === "5") {
     finalScore.innerHTML = "Sorry, you lost.";
     disableButtons();
-    restartBtn.removeAttribute("hidden");
+    enableRestartButton();
   }
 }
 
