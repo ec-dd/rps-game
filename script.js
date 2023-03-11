@@ -6,6 +6,7 @@ let computerScore = 0;
 let result = document.querySelector("#result"); //div to display result of round
 let score = document.querySelector("#score"); //div to display score
 let finalScore = document.querySelector("#final"); //final result
+// finalScore.innerHTML = "hello";
 
 // buttons
 const rockBtn = document.querySelector(".rock-btn"); // rock button
@@ -15,8 +16,8 @@ const buttons = [rockBtn, paperBtn, scissorsBtn]; //Array of game buttons
 const restartBtn = document.querySelector(".restart"); // restart button
 
 // Score counter
-const playerScoreCounter = document.getElementById("playerScoreCounter");
-const computerScoreCounter = document.getElementById("computerScoreCounter");
+const playerScoreCounter = document.getElementById("playerScoreCount");
+const computerScoreCounter = document.getElementById("computerScoreCount");
 
 // Click event on buttons (calling playRound())
 rockBtn.addEventListener("click", () => {
@@ -137,16 +138,13 @@ function playRound(playerSelection, computerSelection) {
     result.innerHTML = "It's a tie ";
   }
 
-  //   display score and winner of round
-  // score.innerHTML =
-  //   "Score is: Player " + playerScore + " vs Computer " + computerScore;
-
-  if (playerScoreCounter === 5) {
+  // When score is reached
+  if (playerScoreCounter.innerHTML === "5") {
     finalScore.innerHTML = "Congrats! You Won";
     disableButtons();
     restartBtn.removeAttribute("hidden");
-  } else if (computerScoreCounter === 5) {
-    finalScore.innerHTML === "Sorry, you lost.";
+  } else if (computerScoreCounter.innerHTML === "5") {
+    finalScore.innerHTML = "Sorry, you lost.";
     disableButtons();
     restartBtn.removeAttribute("hidden");
   }
