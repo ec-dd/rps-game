@@ -89,7 +89,7 @@ function playRound(playerSelection, computerSelection) {
   ) {
     increaseComputerScore();
     displayScores();
-    result.innerHTML = "You Lose! Paper beats Rock ";
+    result.innerHTML = "<p>You Lose! Paper beats Rock </p>";
   }
 
   if (
@@ -98,7 +98,7 @@ function playRound(playerSelection, computerSelection) {
   ) {
     increaseComputerScore();
     displayScores();
-    result.innerHTML = "You Lose! Rock beats Scissors ";
+    result.innerHTML = "<p>You Lose! Rock beats Scissors </p>";
   }
 
   if (
@@ -107,7 +107,7 @@ function playRound(playerSelection, computerSelection) {
   ) {
     increaseComputerScore();
     displayScores();
-    result.innerHTML = "You Lose! Scissors beats Paper ";
+    result.innerHTML = "<p>You Lose! Scissors beats Paper </p>";
   }
 
   // When player beats computer
@@ -117,7 +117,7 @@ function playRound(playerSelection, computerSelection) {
   ) {
     increasePlayerScore();
     displayScores();
-    result.innerHTML = "You Win! Paper beats Rock ";
+    result.innerHTML = "<p>You Win! Paper beats Rock </p>";
   }
 
   if (
@@ -126,7 +126,7 @@ function playRound(playerSelection, computerSelection) {
   ) {
     increasePlayerScore();
     displayScores();
-    result.innerHTML = "You Win! Rock beats Scissors ";
+    result.innerHTML = "<p>You Win! Rock beats Scissors </p>";
   }
 
   if (
@@ -135,21 +135,21 @@ function playRound(playerSelection, computerSelection) {
   ) {
     increasePlayerScore();
     displayScores();
-    result.innerHTML = "You Win! Paper beats Rock ";
+    result.innerHTML = "<p>You Win! Paper beats Rock </p>";
   }
 
   // When players have the same choice, it's a tie
   if (playerSelection.toLowerCase() === computerSelection) {
-    result.innerHTML = "It's a tie ";
+    result.innerHTML = "<p>It's a tie</p>";
   }
 
   // When score is reached
   if (playerScoreCounter.innerHTML === "5") {
-    finalScore.innerHTML = "Congrats! You Won the game!";
+    finalScore.innerHTML = "<p>Congrats! You Won the game!</p>";
     disableButtons();
     enableRestartButton();
   } else if (computerScoreCounter.innerHTML === "5") {
-    finalScore.innerHTML = "Sorry, you lost the game.";
+    finalScore.innerHTML = "<p>Sorry, you lost the game.</p>";
     disableButtons();
     enableRestartButton();
   }
