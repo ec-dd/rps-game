@@ -5,11 +5,21 @@
   flex-direction: column;
 }
 
+.container img {
+  height: 150px;
+  width: 150px;
+}
+
 .title {
   font-family: "Tilt Warp", cursive;
 }
 
 .choices {
+  display: flex;
+  flex-direction: column;
+}
+
+.choiceBoxes {
   display: flex;
 }
 
@@ -20,6 +30,10 @@
 }
 
 .score {
+  margin-top: 30px;
+}
+
+.score-border {
   display: flex;
   flex-direction: row;
   padding: 0px 100px 0px;
