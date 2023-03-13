@@ -6,7 +6,10 @@ let computerScore = 0;
 let result = document.querySelector("#result"); //div to display result of round
 let score = document.querySelector("#score"); //div to display score
 let finalScore = document.querySelector("#final"); //final result
-// finalScore.innerHTML = "hello";
+
+// choices/pick
+let playerPick = document.getElementById("playerPick");
+let computerPick = document.getElementById("computerPick");
 
 // buttons
 const rockBtn = document.querySelector(".rock-btn"); // rock button
@@ -80,8 +83,16 @@ function disableButtons() {
   }
 }
 
+// function to display the choices of player & computer
+function displayChoices(player, computer) {
+  playerPick.innerHTML = `<p>${player}<p>`;
+  computerPick.innerHTML = `<p>${computer}<p>`;
+}
+
 // Function to play a round of rps
 function playRound(playerSelection, computerSelection) {
+  displayChoices(playerSelection, computerSelection);
+
   // When computer beats player
   if (
     playerSelection.toLowerCase() === "rock" &&

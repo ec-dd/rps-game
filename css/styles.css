@@ -9,11 +9,20 @@
   font-family: "Tilt Warp", cursive;
 }
 
+.choices {
+  display: flex;
+}
+
+#playerChoiceBox,
+#computerChoiceBox {
+  border: solid;
+  padding: 30px;
+}
+
 .score {
   display: flex;
   flex-direction: row;
   padding: 0px 100px 0px;
-  margin: 100px;
   border: solid;
 }
 
@@ -23,4 +32,5 @@
 
 p {
   font-family: "Bebas Neue", cursive;
+  font-size: larger;
 }
